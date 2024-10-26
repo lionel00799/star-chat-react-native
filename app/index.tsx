@@ -1,15 +1,37 @@
-import { Text, View } from "react-native";
+import React from "react";
+import Background from "../components/Background";
+import Logo from "../components/Logo";
+import Header from "../components/Header";
+import Button from "../components/Button";
+import Paragraph from "../components/Paragraph";
+import { useRouter } from "expo-router";
 
-export default function Index() {
+const StartScreen = () => {
+  const router = useRouter();
+
+  const handleNavigateToLogin = () => {
+    router.push("/LoginScreen");
+  };
+
+  const handleNavigateToRegister = () => {
+    router.push("/RegisterScreen");
+  };
+
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
+      <Background>
+        <Logo />
+        <Header>Star Chat</Header>
+        <Paragraph>
+          The easiest way to start with your amazing application.
+        </Paragraph>
+        <Button mode="contained" onPress={handleNavigateToLogin}>
+          Login
+        </Button>
+        <Button mode="outlined" onPress={handleNavigateToRegister}>
+          Sign Up
+        </Button>
+      </Background>
   );
-}
+};
+
+export default StartScreen;
